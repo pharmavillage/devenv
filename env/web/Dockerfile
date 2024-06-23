@@ -1,4 +1,4 @@
-FROM nginx:1.13
+FROM arm64v8/nginx
 
 RUN apt-get clean && apt-get update && apt-get install -y rsync
 

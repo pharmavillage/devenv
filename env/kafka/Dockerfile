@@ -1,4 +1,4 @@
-FROM wurstmeister/kafka
+FROM arm64v8/zookeeper
 
 ENV PATH="$PATH:/root/.local/share/fnm"
 
