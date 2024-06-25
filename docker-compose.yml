@@ -1,19 +1,25 @@
+include:
+- ui/docker-compose.yml #with serviceB declared
+# - golang/docker-compose.yml #with serviceB declared
+
+# ^ uncomment this if you would like to add these to the build aswell
+
 services:
-  ui:
-    container_name: airsend.ui
-    build:
-      context: env/ui
-    ports:
-      - "${AIRSEND_UI_PORT:-20008}:80"
-    volumes:
-      - ./ui:/ui
-    working_dir: /ui
-    command: npm run serve -- --port 80 --host 0.0.0.0
-    logging:
-      driver: "json-file"
-      options:
-        max-file: 3
-        max-size: 1m
+  # ui:
+  #   container_name: airsend.ui
+  #   build:
+  #     context: env/ui
+  #   ports:
+  #     - "${AIRSEND_UI_PORT:-20008}:80"
+  #   volumes:
+  #     - ./ui:/ui
+  #   working_dir: /ui
+  #   command: pnpm start
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-file: 3
+  #       max-size: 1m
 
   api_web:
     container_name: airsend.api.web

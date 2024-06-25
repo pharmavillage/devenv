@@ -12,8 +12,11 @@ NODEUTIL_REPOSITORY_SSH=git@github.com:pharmavillage/nodeutil.git
 NODEUTIL_REPOSITORY_HTTP=https://github.com/pharmavillage/nodeutil.git
 WEBSOCKET_REPOSITORY_SSH=git@github.com:pharmavillage/websocket.git
 WEBSOCKET_REPOSITORY_HTTP=https://github.com/pharmavillage/websocket.git
+GOLANG_REPOSITORY_SSH=git@github.com:pharmavillage/go-workspace.git
+GOLANG_REPOSITORY_HTTP=https://github.com/pharmavillage/go-workspace.git
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 API_DIR="$SCRIPT_DIR/api"
+GOLANG_DIR="$SCRIPT_DIR/golang"
 UI_DIR="$SCRIPT_DIR/ui"
 NODEUTIL_DIR="$SCRIPT_DIR/nodeutil"
 WEBSOCKET_DIR="$SCRIPT_DIR/websocket"
@@ -170,6 +173,7 @@ title "Checking github.com ssh config (you may have to enter your private key pa
 if ssh -T git@github.com 2>&1 | grep "You've successfully authenticated" > /dev/null 2>/dev/null; then
   echo "Cloning using ssh (best option)..."
   API_REPOSITORY=$API_REPOSITORY_SSH;
+  GOLANG_REPOSITORY=$GOLANG_REPOSITORY_SSH;
   UI_REPOSITORY=$UI_REPOSITORY_SSH;
   NODEUTIL_REPOSITORY=$NODEUTIL_REPOSITORY_SSH;
   WEBSOCKET_REPOSITORY=$WEBSOCKET_REPOSITORY_SSH;
@@ -184,12 +188,14 @@ else
   UI_REPOSITORY=$UI_REPOSITORY_HTTP;
   NODEUTIL_REPOSITORY=$NODEUTIL_REPOSITORY_HTTP;
   WEBSOCKET_REPOSITORY=$WEBSOCKET_REPOSITORY_HTTP;
+  GOLANG_REPOSITORY=$GOLANG_REPOSITORY_HTTP;
 fi
 
 clone "API" "$API_DIR" "$API_REPOSITORY"
 clone "UI" "$UI_DIR" "$UI_REPOSITORY"
 clone "NODEUTIL" "$NODEUTIL_DIR" "$NODEUTIL_REPOSITORY"
 clone "WEBSOCKET" "$WEBSOCKET_DIR" "$WEBSOCKET_REPOSITORY"
+clone "GOLANG" "$GOLANG_DIR" "$GOLANG_REPOSITORY"
 
 success "All repositories successfully cloned..."
 
