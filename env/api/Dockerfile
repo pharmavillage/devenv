@@ -60,4 +60,4 @@ ENV PATH="/var/www/dev/vendor/bin:${PATH}"
 COPY init.sh /
 
 # replace/extend the original command
-CMD bash /init.sh
+ENTRYPOINT [ "bash /init.sh" ] 

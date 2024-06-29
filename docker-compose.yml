@@ -1,6 +1,7 @@
 include:
-- ui/docker-compose.yml #with serviceB declared
+  - ui/docker-compose.yml #with serviceB declared
 # - golang/docker-compose.yml #with serviceB declared
+# - ui/docker-compose.yml #with serviceB declared
 
 # ^ uncomment this if you would like to add these to the build aswell
 
@@ -31,7 +32,7 @@ services:
       - ./api:/var/www/dev
     working_dir: /var/www/dev
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: 3
         max-size: 1m
@@ -495,6 +496,7 @@ services:
       - "${SWAGGER_PORT:-82}:8080"
     environment:
       URL: swagger.yaml
+      # turn this swagger.yml into a sdk using kioto 
     volumes:
       - ./api/doc/airsend_openapi30.yaml:/usr/share/nginx/html/swagger.yaml:${CACHING_OPTION:-cached}
 
